@@ -9,6 +9,7 @@ const PORT = 3000;
 app.use(express.static("./static"));
 
 
+let numConnections = 0;
 io.on('connection', socket =>{
     console.log("A user connected");
     
@@ -17,7 +18,8 @@ io.on('connection', socket =>{
     })
     
     setTimeout(()=>{
-        socket.emit("Welcome", socket.id);
+        socket.emit("Welcome", numConnections);
+        numConnections++;
     }, 300);
     
     socket.broadcast.emit("New Player Joined", socket.id);

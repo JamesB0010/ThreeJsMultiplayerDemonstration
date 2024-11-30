@@ -1,27 +1,20 @@
 import SceneInitializer from "./SceneInitializer.js";
-let sceneInitializer = new SceneInitializer(animate);
-var socket = io();
+import SceneBuilder from "./SceneBuilder.js";
+import NetworkingLogic from "./NetworkingLogic.js";
 
-let scene = sceneInitializer.scene;
-let renderer = sceneInitializer.renderer;
-let camera = sceneInitializer.camera;
 
-sceneInitializer.FillScene();
+const sceneInitializer = new SceneInitializer(animate);
+const sceneBuilder = new SceneBuilder(sceneInitializer.scene, sceneInitializer.camera, sceneInitializer.renderer);
 
-//sceneInitializer.AddOrbitControls();
+let networking = new NetworkingLogic();
 
-sceneInitializer.AddFirstPersonControls();
+sceneBuilder.AddLights().AddFog().AddSkybox().AddBuilding().AddFirstPersonControls();
 
-function animate() {
-    renderer.render( scene, camera );
+function animate(dt) {
+    sceneBuilder.Update(dt);
 }
 
-
-//networking stuff
-socket.on("Welcome", (id)=>{
-    alert(`Welcome user ${id} to the game! `);
-})
-
-socket.on("New Player Joined", (id)=>{
-    alert(`A New Player Has Joined with the id ${id}!`);
+document.addEventListener("PlayerAdded", (e)=>{
+    alert(`A New Player Has Joined with the id ${e.detail}!`);
+    sceneBuilder.AddOtherPlayer();
 })

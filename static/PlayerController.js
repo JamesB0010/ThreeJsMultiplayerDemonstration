@@ -17,6 +17,5 @@ export default class PlayerController{
         this.#firstPersonControls.update(dt);
         let camPos = this.#camera.position;
         this.#camera.position.set(camPos.x,this.#height,camPos.z);
-        console.log(camPos);
     }
 }
