@@ -25,8 +25,8 @@ export default class SceneBuilder{
         return this;
     }
     
-    AddFirstPersonControls(){
-        this.playerController = new PlayerController(this.camera, this.renderer);
+    AddFirstPersonControls(startPosX, startPosZ){
+        this.playerController = new PlayerController(this.camera, this.renderer, startPosX, startPosZ);
         return this;
     }
     
@@ -62,12 +62,12 @@ export default class SceneBuilder{
         return this;
     }
     
-    AddOtherPlayer(){
+    AddOtherPlayer(xPos, yPos){
         const geometry = new THREE.CapsuleGeometry( 0.15, 0.175, 4, 8 );
         const material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
         this.otherPlayer = new THREE.Mesh( geometry, material ); 
         this.#scene.add( this.otherPlayer );
-        this.otherPlayer.position.set(-2.7694893717024964, 0.25, -2.3861745217986163)
+        this.otherPlayer.position.set(xPos, 0.25, yPos)
         return this;
     }
 

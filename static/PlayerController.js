@@ -4,13 +4,13 @@ export default class PlayerController{
     #firstPersonControls;
     #camera;
     #height;
-    constructor(camera, renderer) {
+    constructor(camera, renderer, startPosX, startPosZ) {
         this.#firstPersonControls = new FirstPersonControls(camera, renderer.domElement);
         this.#firstPersonControls.lookSpeed = 0.2;
         this.#firstPersonControls.movementSpeed = 1.6;
         this.#height = 0.4;
         this.#camera = camera;
-        camera.position.set(-2.7694893717024964, this.#height, -2.3861745217986163);
+        camera.position.set(startPosX, this.#height, startPosZ);
     }
     
     Update(dt){
