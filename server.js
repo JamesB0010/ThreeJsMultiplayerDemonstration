@@ -15,6 +15,12 @@ io.on('connection', socket =>{
     
     socket.on("disconnect", ()=>{
         console.log("A user disconnected");
+        numConnections--;
+    })
+    
+    socket.on("SpawnOtherPlayer", ()=>{
+        console.log("Recieved Spawn Other Player");
+        socket.emit("New Player Joined", socket.id);
     })
     
     setTimeout(()=>{
