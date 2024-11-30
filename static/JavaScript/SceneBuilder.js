@@ -13,6 +13,7 @@ export default class SceneBuilder{
     textureLoader = new THREE.TextureLoader();
     gltfLoader = new GLTFLoader();
     otherPlayer;
+    orbitControls = null;
     constructor(scene, camera, renderer) {
         this.#scene = scene;
         this.camera = camera;
@@ -20,8 +21,7 @@ export default class SceneBuilder{
     }
     
     AddOrbitControls(){
-        const controls = new OrbitControls( this.camera, this.renderer.domElement );
-        controls.update();
+        this.orbitControls = new OrbitControls( this.camera, this.renderer.domElement );
         return this;
     }
     
@@ -41,7 +41,7 @@ export default class SceneBuilder{
     }
 
     AddSkybox() {
-        this.textureLoader.load("./skyTexture.jpg", texture => {
+        this.textureLoader.load("../Images/skyTexture.jpg", texture => {
             const skyboxGeometry = new THREE.SphereGeometry(30, 32, 16);
             const skyboxMaterial = new THREE.MeshBasicMaterial({
                 map: texture,
@@ -56,7 +56,7 @@ export default class SceneBuilder{
     }
 
     AddBuilding(){
-        this.gltfLoader.load("./Nacht.glb", glb =>{
+        this.gltfLoader.load("../Models/Nacht.glb", glb =>{
             this.#scene.add(glb.scene);
         });
         return this;
@@ -78,5 +78,8 @@ export default class SceneBuilder{
 
         if(this.playerController)
             this.playerController.Update(dt);
+        
+        if(this.orbitControls)
+            this.orbitControls.update(dt);
     }
 }

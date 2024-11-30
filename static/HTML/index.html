@@ -13,15 +13,28 @@
         }
     </script>
 
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
     
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="../JavaScript/script.js"></script>
 
     <script src="/socket.io/socket.io.js"></script>
 
     
 </head>
+<img src="../Images/frostEffect.png" id = "FrostEffect">
 <body>
+    <div id = "uiParent">
+        <button id = "EnterLobby">Enter Lobby</button>
+    </div>
     
+    <div id = UiParentInGame>
+        <p class = "hintText">Hint: Press Space To Enable/Disable the character movement</p>
+    </div>
+
+    <div id = "TitleDiv">
+        <p id = "title">Three JS Multiplayer Demo</p>
+    </div>
+
+
 </body>
 </html>

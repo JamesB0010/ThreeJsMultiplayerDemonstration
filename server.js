@@ -7,6 +7,11 @@ const io = new Server(server);
 const PORT = 3000;
 
 app.use(express.static("./static"));
+app.use(express.static("./static/CSS"));
+app.use(express.static("./static/HTML"));
+app.use(express.static("./static/Images"));
+app.use(express.static("./static/JavaScript"));
+app.use(express.static("./static/Models"));
 
 
 let numConnections = 0;
