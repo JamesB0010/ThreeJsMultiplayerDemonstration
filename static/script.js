@@ -10,8 +10,6 @@ sceneBuilder.AddLights().AddFog().AddSkybox().AddBuilding().AddOrbitControls();
 
 function animate(dt) {
     sceneBuilder.Update(dt);
-    
-    console.log(sceneInitializer.camera);
 }
 
 let isPlayer1 = false;
@@ -31,17 +29,22 @@ socket.on("Welcome", (connectedClientsCount)=>{
 })
 
 socket.on("New Player Joined", (id)=>{
-
-    const newPlayerEvent = new CustomEvent("PlayerAdded", {detail: id});
-    document.dispatchEvent(newPlayerEvent);
-})
-
-document.addEventListener("PlayerAdded", (e)=>{
-    alert(`A New Player Has Joined with the id ${e.detail}!`);
+    alert(`A New Player Has Joined with the id ${id}!`);
     if(isPlayer1){
         sceneBuilder.AddOtherPlayer(2.9371103467522652,2.2626621169409145);
     }
     else{
         sceneBuilder.AddOtherPlayer(-2.7694893717024964, -2.386174521798616);
     }
+})
+
+
+document.addEventListener("ClientMoved", e =>{
+    socket.emit("ClientMoved", e.detail);
+})
+
+
+socket.on("UpdateOtherPlayer", newPosition =>{
+    const prevPos = sceneBuilder.otherPlayer.position;
+    sceneBuilder.otherPlayer.position.set(newPosition.x, prevPos.y, newPosition.z);
 })

@@ -13,6 +13,17 @@ let numConnections = 0;
 io.on('connection', socket =>{
     console.log("A user connected");
     
+    
+    setTimeout(()=>{
+        socket.emit("Welcome", numConnections);
+        numConnections++;
+    }, 300);
+
+    socket.broadcast.emit("New Player Joined", socket.id);
+    
+    
+    
+    
     socket.on("disconnect", ()=>{
         console.log("A user disconnected");
         numConnections--;
@@ -23,13 +34,9 @@ io.on('connection', socket =>{
         socket.emit("New Player Joined", socket.id);
     })
     
-    setTimeout(()=>{
-        socket.emit("Welcome", numConnections);
-        numConnections++;
-    }, 300);
-    
-    socket.broadcast.emit("New Player Joined", socket.id);
-    
+    socket.on("ClientMoved", position =>{
+        socket.broadcast.emit("UpdateOtherPlayer", position);
+    })
 })
 
 server.listen(PORT, err =>{
