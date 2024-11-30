@@ -6,13 +6,14 @@ const sceneInitializer = new SceneInitializer(animate);
 const sceneBuilder = new SceneBuilder(sceneInitializer.scene, sceneInitializer.camera, sceneInitializer.renderer);
 let socket = io();
 
-sceneBuilder.AddLights().AddFog().AddSkybox().AddBuilding().AddOrbitControls();
+sceneBuilder.AddLights().AddFog().AddSkybox().AddBuilding();
 
 function animate(dt) {
     sceneBuilder.Update(dt);
 }
 
 let isPlayer1 = false;
+let playerSpawned = false;
 
 socket.on("Welcome", (connectedClientsCount)=>{
     alert(`Welcome user to the game! `);
@@ -26,17 +27,33 @@ socket.on("Welcome", (connectedClientsCount)=>{
         sceneBuilder.AddFirstPersonControls(2.9371103467522652,2.2626621169409145);
         socket.emit("SpawnOtherPlayer");
     }
+    
+    playerSpawned = true;
 })
 
 socket.on("New Player Joined", (id)=>{
     alert(`A New Player Has Joined with the id ${id}!`);
     if(isPlayer1){
-        sceneBuilder.AddOtherPlayer(2.9371103467522652,2.2626621169409145);
+        sceneBuilder.AddOtherPlayer({x: 2.9371103467522652, z: 2.2626621169409145});
     }
     else{
-        sceneBuilder.AddOtherPlayer(-2.7694893717024964, -2.386174521798616);
+        socket.emit("GetOtherPlayerPos");
     }
 })
+
+socket.on("ReturnedOtherPlayerPos", pos =>{
+    sceneBuilder.AddOtherPlayer(pos);
+})
+
+socket.on("GetPos", () =>{
+    if(playerSpawned){
+        socket.emit("ReturnedPos", {x: sceneInitializer.camera.position.x, z: sceneInitializer.camera.position.z});
+    }
+    else{
+        socket.emit("ReturnedPos", {x: 2.9371103467522652, z: 2.2626621169409145});
+    }
+})
+
 
 
 document.addEventListener("ClientMoved", e =>{
@@ -48,3 +65,21 @@ socket.on("UpdateOtherPlayer", newPosition =>{
     const prevPos = sceneBuilder.otherPlayer.position;
     sceneBuilder.otherPlayer.position.set(newPosition.x, prevPos.y, newPosition.z);
 })
+
+
+socket.on("PlayerDisconnected", ()=>{
+    if(isPlayer1){
+        sceneInitializer.scene.remove(sceneBuilder.otherPlayer);
+        sceneBuilder.otherPlayer = null;
+        return;
+    }
+    
+    if(isPlayer1 == false){
+        sceneInitializer.scene.remove(sceneBuilder.otherPlayer);
+        sceneBuilder.otherPlayer = null;
+        isPlayer1 = true;
+        return;
+    }
+})
+
+

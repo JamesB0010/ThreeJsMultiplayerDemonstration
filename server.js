@@ -27,11 +27,20 @@ io.on('connection', socket =>{
     socket.on("disconnect", ()=>{
         console.log("A user disconnected");
         numConnections--;
+        socket.broadcast.emit("PlayerDisconnected")
     })
     
     socket.on("SpawnOtherPlayer", ()=>{
         console.log("Recieved Spawn Other Player");
         socket.emit("New Player Joined", socket.id);
+    })
+    
+    socket.on("GetOtherPlayerPos", () =>{
+        socket.broadcast.emit("GetPos");
+    })
+
+    socket.on("ReturnedPos", pos =>{
+        socket.broadcast.emit("ReturnedOtherPlayerPos", pos);
     })
     
     socket.on("ClientMoved", position =>{
