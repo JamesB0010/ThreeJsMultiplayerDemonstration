@@ -1,5 +1,4 @@
 import SceneInitializer from "./SceneInitializer.js";
-
 let sceneInitializer = new SceneInitializer(animate);
 
 let scene = sceneInitializer.scene;
@@ -8,11 +7,9 @@ let camera = sceneInitializer.camera;
 
 sceneInitializer.FillScene();
 
-sceneInitializer.AddOrbitControls();
+//sceneInitializer.AddOrbitControls();
 
-//sceneInitializer.AddFirstPersonControls();
-
-
+sceneInitializer.AddFirstPersonControls();
 
 function animate() {
     renderer.render( scene, camera );

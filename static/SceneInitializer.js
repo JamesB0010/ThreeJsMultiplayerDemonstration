@@ -1,7 +1,8 @@
 ﻿import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
+import PlayerController from './PlayerController.js';
+import {Clock} from "three";
 export default class SceneInitializer {
     renderer;
     scene;
@@ -11,6 +12,8 @@ export default class SceneInitializer {
     textureLoader = new THREE.TextureLoader();
     gltfLoader = new GLTFLoader();
     userUpdateFunction;
+    clock = new THREE.Clock();
+    playerController;
     
 
     constructor(UpdateFunction) {
@@ -24,10 +27,6 @@ export default class SceneInitializer {
             this.#Update();
         });
         document.body.appendChild(this.renderer.domElement);
-
-        
-
-        this.camera.position.set(0,10,0);
     }
     AddOrbitControls(){
         const controls = new OrbitControls( this.camera, this.renderer.domElement ); 
@@ -35,16 +34,14 @@ export default class SceneInitializer {
     }
     
     AddFirstPersonControls(){
-        const controls = new FirstPersonControls(this.camera, this.renderer.domElement);
-        controls.lookSpeed = 0.8;
-        controls.movementSpeed = 5;
-        controls.update();
+        this.playerController = new PlayerController(this.camera, this.renderer);
     }
     
     #Update(){
         if(this.#skyboxLoaded){
             this.skybox.position.set(this.camera.position.x, this.camera.position.y, this.camera.position.z);
         }
+        this.playerController.Update(this.clock.getDelta());
         this.userUpdateFunction();
     }
 
