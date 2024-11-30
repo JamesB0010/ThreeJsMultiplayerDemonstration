@@ -1,5 +1,6 @@
 import SceneInitializer from "./SceneInitializer.js";
 let sceneInitializer = new SceneInitializer(animate);
+var socket = io();
 
 let scene = sceneInitializer.scene;
 let renderer = sceneInitializer.renderer;
@@ -14,3 +15,13 @@ sceneInitializer.AddFirstPersonControls();
 function animate() {
     renderer.render( scene, camera );
 }
+
+
+//networking stuff
+socket.on("Welcome", (id)=>{
+    alert(`Welcome user ${id} to the game! `);
+})
+
+socket.on("New Player Joined", (id)=>{
+    alert(`A New Player Has Joined with the id ${id}!`);
+})

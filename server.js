@@ -11,6 +11,17 @@ app.use(express.static("./static"));
 
 io.on('connection', socket =>{
     console.log("A user connected");
+    
+    socket.on("disconnect", ()=>{
+        console.log("A user disconnected");
+    })
+    
+    setTimeout(()=>{
+        socket.emit("Welcome", socket.id);
+    }, 300);
+    
+    socket.broadcast.emit("New Player Joined", socket.id);
+    
 })
 
 server.listen(PORT, err =>{
