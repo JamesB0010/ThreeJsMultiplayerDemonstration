@@ -49,12 +49,7 @@ function RunMultiplayer(){
         alert(`A New Player Has Joined with the id ${id}!`);
         otherPlayerId = id;
         
-        if(isPlayer1){
-            sceneBuilder.AddOtherPlayer({x: 2.9371103467522652, z: 2.2626621169409145});
-        }
-        else{
-            socket.emit("GetOtherPlayerPos", otherPlayerId, InitOtherPlayer);
-        }
+        sceneBuilder.AddOtherPlayer({x: 2.9371103467522652, z: 2.2626621169409145});
     })
     
     function InitOtherPlayer(pos){
