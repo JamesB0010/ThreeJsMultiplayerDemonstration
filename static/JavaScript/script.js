@@ -39,6 +39,11 @@ function RunMultiplayer(){
         document.querySelector("#uiParent").remove();
         document.querySelector(".hintText").style.visibility = "visible";
     })
+    
+    socket.on("InitPlayer1_OnPlayer2Client", id =>{
+        otherPlayerId = id;
+        socket.emit("GetOtherPlayerPos", otherPlayerId, InitOtherPlayer);
+    })
 
     socket.on("New Player Joined", (id)=>{
         alert(`A New Player Has Joined with the id ${id}!`);
@@ -48,11 +53,13 @@ function RunMultiplayer(){
             sceneBuilder.AddOtherPlayer({x: 2.9371103467522652, z: 2.2626621169409145});
         }
         else{
-            socket.emit("GetOtherPlayerPos", otherPlayerId, pos =>{
-                sceneBuilder.AddOtherPlayer(pos);
-            });
+            socket.emit("GetOtherPlayerPos", otherPlayerId, InitOtherPlayer);
         }
     })
+    
+    function InitOtherPlayer(pos){
+        sceneBuilder.AddOtherPlayer(pos);
+    }
 
     document.addEventListener("ClientMoved", e =>{
         socket.emit("ClientMoved", e.detail);

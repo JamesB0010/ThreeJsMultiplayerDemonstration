@@ -24,8 +24,9 @@ io.on('connection', socket =>{
         playerPositions.set(socket.id, {x: -2.7694893717024964, z: -2.386174521798616});
     }
     else if(numConnections > 0){
+        console.log(playerPositions.keys());
+        socket.emit("InitPlayer1_OnPlayer2Client", Array.from(playerPositions.keys())[0]);
         playerPositions.set(socket.id, {x: 2.9371103467522652, z: 2.2626621169409145});
-        socket.emit("New Player Joined", socket.id);
     }
     
     
@@ -38,6 +39,7 @@ io.on('connection', socket =>{
     
     socket.on("disconnect", ()=>{
         console.log("A user disconnected");
+        playerPositions.delete(socket.id);
         numConnections--;
         socket.broadcast.emit("PlayerDisconnected")
     })
