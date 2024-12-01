@@ -15,7 +15,6 @@ function RunMultiplayer(){
     let socket = io();
     let otherPlayerId;
     let isPlayer1 = false;
-    let playerSpawned = false;
     
     socket.on("Welcome", (connectedClientsCount)=>{
         alert(`Welcome user to the game! `);
@@ -29,9 +28,6 @@ function RunMultiplayer(){
             isPlayer1 = false;
             sceneBuilder.AddFirstPersonControls(2.9371103467522652,2.2626621169409145);
         }
-
-        playerSpawned = true;
-
 
 
         document.querySelector("#FrostEffect").remove();
