@@ -9,8 +9,12 @@ export default class SceneInitializer {
     constructor(UpdateFunction) {
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        
+        //Place the camera in a nice position for my scene
         this.camera.position.set(-7.105353078953052, 2.3286597352857767, 1.8766181638996087);
         this.camera.quaternion.copy(new THREE.Quaternion(-0.1077602744535924, -0.5504214260084799, -0.0719149256703975, 0.8247740420904983));
+        
+        
         this.userUpdateFunction = UpdateFunction;
 
         this.renderer = new THREE.WebGLRenderer();
