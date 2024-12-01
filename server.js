@@ -25,7 +25,7 @@ io.on('connection', socket =>{
     }
     else if(numConnections > 0){
         console.log(playerPositions.keys());
-        socket.emit("InitPlayer1_OnPlayer2Client", Array.from(playerPositions.keys())[0]);
+        socket.emit("SpawnPlayer1_OnPlayer2Client", Array.from(playerPositions.keys())[0]);
         playerPositions.set(socket.id, {x: 2.9371103467522652, z: 2.2626621169409145});
     }
     

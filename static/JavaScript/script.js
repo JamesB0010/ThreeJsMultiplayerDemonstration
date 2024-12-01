@@ -40,7 +40,7 @@ function RunMultiplayer(){
         document.querySelector(".hintText").style.visibility = "visible";
     })
     
-    socket.on("InitPlayer1_OnPlayer2Client", id =>{
+    socket.on("SpawnPlayer1_OnPlayer2Client", id =>{
         otherPlayerId = id;
         socket.emit("GetOtherPlayerPos", otherPlayerId, InitOtherPlayer);
     })
