@@ -43,7 +43,6 @@ function RunMultiplayer(){
     })
 
     socket.on("New Player Joined", (id)=>{
-        alert(`A New Player Has Joined with the id ${id}!`);
         otherPlayerId = id;
         
         sceneBuilder.AddOtherPlayer({x: 2.9371103467522652, z: 2.2626621169409145});
