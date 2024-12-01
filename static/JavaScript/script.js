@@ -13,7 +13,6 @@ function animate(dt) {
 
 function RunMultiplayer(){
     let socket = io();
-    let otherPlayerId;
     let isPlayer1 = false;
     
     socket.on("Welcome", (connectedClientsCount)=>{
@@ -38,8 +37,7 @@ function RunMultiplayer(){
     })
     
     socket.on("SpawnPlayer1_OnPlayer2Client", id =>{
-        otherPlayerId = id;
-        socket.emit("GetOtherPlayerPos", otherPlayerId, InitOtherPlayer);
+        socket.emit("GetOtherPlayerPos", id, InitOtherPlayer);
     })
 
     socket.on("New Player Joined", (id)=>{
