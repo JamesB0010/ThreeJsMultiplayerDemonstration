@@ -13,18 +13,15 @@ function animate(dt) {
 
 function RunMultiplayer(){
     let socket = io();
-    let isPlayer1 = false;
     
     socket.on("Welcome", (connectedClientsCount)=>{
         alert(`Welcome user to the game! `);
 
         const firstClient = connectedClientsCount === 0;
         if(firstClient){
-            isPlayer1 = true;
             sceneBuilder.AddFirstPersonControls(-2.7694893717024964, -2.386174521798616);
         }
         else{ 
-            isPlayer1 = false;
             sceneBuilder.AddFirstPersonControls(2.9371103467522652,2.2626621169409145);
         }
 
@@ -61,18 +58,8 @@ function RunMultiplayer(){
 
 
     socket.on("PlayerDisconnected", ()=>{
-        if(isPlayer1){
             sceneInitializer.scene.remove(sceneBuilder.otherPlayer);
             sceneBuilder.otherPlayer = null;
-            return;
-        }
-
-        if(isPlayer1 == false){
-            sceneInitializer.scene.remove(sceneBuilder.otherPlayer);
-            sceneBuilder.otherPlayer = null;
-            isPlayer1 = true;
-            return;
-        }
     })
 }
 
