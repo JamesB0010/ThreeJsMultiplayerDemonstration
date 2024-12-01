@@ -13,9 +13,10 @@ function animate(dt) {
 
 function RunMultiplayer(){
     let socket = io();
+    let otherPlayerId;
     let isPlayer1 = false;
     let playerSpawned = false;
-
+    
     socket.on("Welcome", (connectedClientsCount)=>{
         alert(`Welcome user to the game! `);
 
@@ -26,7 +27,6 @@ function RunMultiplayer(){
         else if(connectedClientsCount > 0){
             isPlayer1 = false;
             sceneBuilder.AddFirstPersonControls(2.9371103467522652,2.2626621169409145);
-            socket.emit("SpawnOtherPlayer");
         }
 
         playerSpawned = true;
@@ -42,29 +42,17 @@ function RunMultiplayer(){
 
     socket.on("New Player Joined", (id)=>{
         alert(`A New Player Has Joined with the id ${id}!`);
+        otherPlayerId = id;
         
         if(isPlayer1){
             sceneBuilder.AddOtherPlayer({x: 2.9371103467522652, z: 2.2626621169409145});
         }
         else{
-            socket.emit("GetOtherPlayerPos");
+            socket.emit("GetOtherPlayerPos", otherPlayerId, pos =>{
+                sceneBuilder.AddOtherPlayer(pos);
+            });
         }
     })
-
-    socket.on("ReturnedOtherPlayerPos", pos =>{
-        sceneBuilder.AddOtherPlayer(pos);
-    })
-
-    socket.on("GetPos", () =>{
-        if(playerSpawned){
-            socket.emit("ReturnedPos", {x: sceneInitializer.camera.position.x, z: sceneInitializer.camera.position.z});
-        }
-        else{
-            socket.emit("ReturnedPos", {x: 2.9371103467522652, z: 2.2626621169409145});
-        }
-    })
-
-
 
     document.addEventListener("ClientMoved", e =>{
         socket.emit("ClientMoved", e.detail);
