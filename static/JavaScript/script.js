@@ -20,11 +20,12 @@ function RunMultiplayer(){
     socket.on("Welcome", (connectedClientsCount)=>{
         alert(`Welcome user to the game! `);
 
-        if(connectedClientsCount === 0){
+        const firstClient = connectedClientsCount === 0;
+        if(firstClient){
             isPlayer1 = true;
             sceneBuilder.AddFirstPersonControls(-2.7694893717024964, -2.386174521798616);
         }
-        else if(connectedClientsCount > 0){
+        else{ 
             isPlayer1 = false;
             sceneBuilder.AddFirstPersonControls(2.9371103467522652,2.2626621169409145);
         }
