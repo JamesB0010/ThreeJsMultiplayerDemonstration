@@ -4,7 +4,6 @@ const http = require('http');
 const server = http.createServer(app);
 const {Server} = require("socket.io");
 const io = new Server(server);
-const PORT = 3000;
 
 app.use(express.static("./static"));
 app.use(express.static("./static/CSS"));
@@ -62,6 +61,6 @@ server.listen(PORT, err =>{
         return;
     }
     
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running`);
 })
 
