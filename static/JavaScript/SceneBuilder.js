@@ -12,7 +12,7 @@ export default class SceneBuilder{
     #skyboxLoaded = false;
     textureLoader = new THREE.TextureLoader();
     gltfLoader = new GLTFLoader();
-    otherPlayer;
+    otherPlayers = new Map();
     orbitControls = null;
     constructor(scene, camera, renderer) {
         this.#scene = scene;
@@ -62,12 +62,13 @@ export default class SceneBuilder{
         return this;
     }
     
-    AddOtherPlayer(pos){
+    AddOtherPlayer(id, pos){
         const geometry = new THREE.CapsuleGeometry( 0.15, 0.175, 4, 8 );
         const material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
-        this.otherPlayer = new THREE.Mesh( geometry, material ); 
-        this.#scene.add( this.otherPlayer );
-        this.otherPlayer.position.set(pos.x, 0.25, pos.z)
+        let mesh = new THREE.Mesh( geometry, material );
+        this.otherPlayers.set(id, mesh); 
+        this.#scene.add( mesh );
+        mesh.position.set(pos.x, 0.25, pos.z)
         return this;
     }
 
