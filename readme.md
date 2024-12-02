@@ -10,6 +10,8 @@ Otherwise, below is a converted version of the presentation, designed to go alon
 ## Play the game!
 You can actually play the game and test for yourself using [this link](https://threejsmultiplayerdemonstration.onrender.com).
 
+Although it is hosted on the free teir of render so when you open the link it may be broken, just give it a minute for the server to start up and reload the page and it should work 😄
+
 ---
 
 - **Development time:**  
