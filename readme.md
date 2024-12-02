@@ -178,7 +178,7 @@ The scene builder is composed of some useful member variables\, a simple constru
 
 ![Multiplayer web games_15](https://github.com/user-attachments/assets/d4401438-61a2-4269-aa92-133dae616497)
 
-![Multiplayer web games_16](https://github.com/user-attachments/assets/2a60c462-d6f6-4a51-8878-296daf1d1dfc)
+![Multiplayer web games_16](https://github.com/user-attachments/assets/2a60c462-d6f6-4a-8878-296daf1d1dfc)
 
 # And…
 
@@ -470,7 +470,20 @@ When the update other player message is received update the position of the othe
 
 ![Multiplayer web games_50](https://github.com/user-attachments/assets/69e33e41-fe23-423d-a22c-9f9f1660bec6)
 
-![](img%5CMultiplayer%20web%20games_51.gif)
+
+![Multiplayer web games_51](https://github.com/user-attachments/assets/f2641805-06e8-4667-893a-3059c86d631d)
+
+
+# Final Touches
+Now we can make it look a little better by adding a title, frost screen border, removing one of the alerts, placing the camera in a nice location to start, and a button that when you press starts the networking stuff
+
+
+This is done by placing all the networking logic and variables in a function and having that function run as a result of the button being pressed
+
+
+
+
+![Multiplayer web games_51](https://github.com/user-attachments/assets/45013cda-2f4f-42a5-af56-af4dad512331)
 
 # Result
 
