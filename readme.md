@@ -484,7 +484,8 @@ When the update other player message is received update the position of the othe
 Now we can make it look a little better by adding a title, frost screen border, removing one of the alerts, placing the camera in a nice location to start, and a button that when you press starts the networking stuff
 
 
-This is done by placing all the networking logic and variables in a function and having that function run as a result of the button being pressed
+This is done by placing the player spawning code and part of the networking logic in a function and having that function run as a result of the button being pressed
+
 
 
 
