@@ -1,21 +1,13 @@
-# Three.js Multiplayer Demonstration
+Hi! this repo is a learning rescourse containing a powerpoint and accompanying code on how to use socket.io and three.js to create a simple multiplayer game.
 
-Hi! This repository is a learning resource containing a PowerPoint presentation and accompanying code on how to use **Socket.IO** and **Three.js** to create a simple multiplayer game.
+for the best experience download the presentation from <a href= "https://github.com/JamesB0010/ThreeJsMultiplayerDemonstration/blob/7df7abd0aa034c3ad63f21bb91a01ce6af797345/Presentation/Multiplayer%20web%20games.pptx">here</a>
 
-For the best experience, download the presentation directly from [this link](https://github.com/JamesB0010/ThreeJsMultiplayerDemonstration/blob/7df7abd0aa034c3ad63f21bb91a01ce6af797345/Presentation/Multiplayer%20web%20games.pptx).
+otherwise below is a converted version of the presentation made to go along with the code
 
-Otherwise, below is a converted version of the presentation, designed to go along with the code.
 
----
+the code took me about 7 hours and i worked on the presentation for around 8
 
-- **Development time:**  
-  - Code: ~7 hours  
-  - Presentation: ~8 hours  
-
-thank you and Enjoy!
-
----
-
+enjoy!
 
 
 
