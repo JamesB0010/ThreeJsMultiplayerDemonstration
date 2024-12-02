@@ -14,28 +14,22 @@ function animate(dt) {
 let socket = io();
 let clientCount = 0;
 
-    socket.on("SpawnPlayer1_OnPlayer2Client", ids =>{
-        for(let i = 0; i < ids.length; i++){
-            if(ids[i] == socket.id)
-                continue;
-            
-            
-        socket.emit("GetOtherPlayersPos", ids[i], InitOtherPlayer);
-        }
+    socket.on("SpawnPlayer1_OnPlayer2Client", id =>{
+        socket.emit("GetOtherPlayerPos", id, InitOtherPlayer);
     })
-    function InitOtherPlayer(id, pos){
-        sceneBuilder.AddOtherPlayer(id, pos);
+    function InitOtherPlayer(pos){
+        sceneBuilder.AddOtherPlayer(pos);
     }
 
-socket.on("UpdateOtherPlayer", (id, newPosition) =>{
-    const prevPos = sceneBuilder.otherPlayers.get(id).position;
-    sceneBuilder.otherPlayers.get(id).position.set(newPosition.x, prevPos.y, newPosition.z);
+socket.on("UpdateOtherPlayer", newPosition =>{
+    const prevPos = sceneBuilder.otherPlayer.position;
+    sceneBuilder.otherPlayer.position.set(newPosition.x, prevPos.y, newPosition.z);
 })
 
 
-socket.on("PlayerDisconnected", (id)=>{
-    sceneInitializer.scene.remove(sceneBuilder.otherPlayers.get(id));
-    sceneBuilder.otherPlayers.delete(id);
+socket.on("PlayerDisconnected", ()=>{
+    sceneInitializer.scene.remove(sceneBuilder.otherPlayer);
+    sceneBuilder.otherPlayer = null;
 })
 
 socket.on("Welcome", (connectedClientsCount)=> {
@@ -43,7 +37,7 @@ socket.on("Welcome", (connectedClientsCount)=> {
 });
     
     socket.on("New Player Joined", (id)=>{
-        sceneBuilder.AddOtherPlayer(id, {x: 2.9371103467522652, z: 2.2626621169409145});
+        sceneBuilder.AddOtherPlayer({x: 2.9371103467522652, z: 2.2626621169409145});
     })
 
 document.addEventListener("ClientMoved", e =>{
