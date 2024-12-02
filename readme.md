@@ -20,8 +20,7 @@ Enjoy!
 
 
 
-
-![](img%5CMultiplayer%20web%20games_0.jpg)
+![Multiplayer web games_0](https://github.com/user-attachments/assets/d47b8ff1-1be4-4ff6-b46e-f69081196b96)
 
 # Multiplayer web games
 
@@ -59,7 +58,9 @@ In the case of socket io there is just a few functions \(20%\) that are used ver
 
 So what are these functions?
 
-![](img%5CMultiplayer%20web%20games_1.png)
+![Multiplayer web games_1](https://github.com/user-attachments/assets/5f7fe890-3f18-4dd3-a81c-b93d0d72671c)
+
+
 
 Assume io here is an object accessible from this scope
 
@@ -69,25 +70,29 @@ What this does is assigns an event listener to react to a socket connecting to t
 
 This callback will be ran on the server for each socket when they connect to the server. Each socket represents a two way communication between server and client
 
-![](img%5CMultiplayer%20web%20games_2.png)
+![Multiplayer web games_2](https://github.com/user-attachments/assets/e66c71f2-96bd-4ca9-8ee6-ce4bea571077)
+
 
 Assume socket here is an object accessible from this scope
 
 Special use of emit\. emit is covered in a sec
 
-![](img%5CMultiplayer%20web%20games_3.png)
+![Multiplayer web games_3](https://github.com/user-attachments/assets/b160292e-ab7f-4377-acd7-b3e9f8afc0a3)
+
 
 Assume socket here is an object accessible from this scope
 
 This is how to react to messages from the server
 
-![](img%5CMultiplayer%20web%20games_4.png)
+![Multiplayer web games_4](https://github.com/user-attachments/assets/c1adf76c-cb59-4ed2-9266-74dad01f2097)
+
 
 Flexibility in what we send when we send messages
 
 # That’s it!
 
-![](img%5CMultiplayer%20web%20games_5.png)
+![Multiplayer web games_5](https://github.com/user-attachments/assets/7367ac05-63ec-485c-bbd5-ce7286d2fbcc)
+
 
 # All Together
 
@@ -111,7 +116,8 @@ So well make an index html file with a link to a css file\, javascript file and 
 
 Very simple stuff we've seen before
 
-![](img%5CMultiplayer%20web%20games_6.png)
+![Multiplayer web games_6](https://github.com/user-attachments/assets/931781bd-b603-402d-8056-e4fb1a68d84b)
+
 
 Next we’ll get some javascript in to get a cube spinning
 
@@ -119,9 +125,10 @@ You may notice that my main file is very small \(12 lines\)\. This is intentiona
 
 All of your networking code is going to be in this file so keeping your code clean by separating it out into different files and classes will really be worth the time it takes\.
 
-![](img%5CMultiplayer%20web%20games_7.png)
+![Multiplayer web games_7](https://github.com/user-attachments/assets/00bef0a9-4a9e-43e3-b8a1-abafa5fd286b)
 
-![](img%5CMultiplayer%20web%20games_8.png)
+
+![Multiplayer web games_8](https://github.com/user-attachments/assets/0e39f95b-f5df-46d9-9747-3b3f665a7613)
 
 Just for reference here is the SceneInitializer\.
 
@@ -129,17 +136,20 @@ It has a few member variables but essentially just sets three js up for us so it
 
 # Run with live server
 
-![](img%5CMultiplayer%20web%20games_9.gif)
+![Multiplayer web games_9](https://github.com/user-attachments/assets/d1557b4b-283e-4178-a710-1a7c9bb84e9e)
+
 
 So when we run this using a live server from our ide we can see our three js scene rendering
 
 # Next serve these files with express (server)
 
-![](img%5CMultiplayer%20web%20games_10.gif)
+![Multiplayer web games_10](https://github.com/user-attachments/assets/9a7e4123-a0a5-452f-a1a2-6e7b0b3c1550)
+
 
 # Now lets make our scene look pretty…
 
-![](img%5CMultiplayer%20web%20games_11.png)
+![Multiplayer web games_11](https://github.com/user-attachments/assets/359b152b-65f7-4421-8956-a2e6e6cf3e31)
+
 
 Well make a scene in blender and export everything into a gltf
 
@@ -155,33 +165,34 @@ So in our main js were going to import our SceneBuilder class \(which ill show i
 
 Well also call scene builders update function in our animate function\. This way any objects like our orbit controller for example can be updated
 
-![](img%5CMultiplayer%20web%20games_12.png)
+![Multiplayer web games_12](https://github.com/user-attachments/assets/ffd421fc-aa93-42bc-b138-50b9e04db100)
 
-![](img%5CMultiplayer%20web%20games_13.gif)
+
+![Multiplayer web games_13](https://github.com/user-attachments/assets/9a1bff15-c55c-4994-8572-d0918aa39d19)
 
 # Scene Builder
 
-![](img%5CMultiplayer%20web%20games_14.png)
+![Multiplayer web games_14](https://github.com/user-attachments/assets/1217c6d5-7209-4d9a-8516-14520c7f81b2)
 
 The scene builder is composed of some useful member variables\, a simple constructor\, an update function and…
 
-![](img%5CMultiplayer%20web%20games_15.png)
+![Multiplayer web games_15](https://github.com/user-attachments/assets/d4401438-61a2-4269-aa92-133dae616497)
 
-![](img%5CMultiplayer%20web%20games_16.png)
+![Multiplayer web games_16](https://github.com/user-attachments/assets/2a60c462-d6f6-4a51-8878-296daf1d1dfc)
 
 # And…
 
-![](img%5CMultiplayer%20web%20games_17.png)
+![Multiplayer web games_17](https://github.com/user-attachments/assets/5db01f37-1c75-479b-9825-3dbf235569fd)
 
 a bunch of chainable methods which allow us to build our scene by adding a bunch of smaller parts to our scene
 
-![](img%5CMultiplayer%20web%20games_18.png)
+![Multiplayer web games_18](https://github.com/user-attachments/assets/e414f914-dd8e-4368-8439-e2a724f44892)
 
-![](img%5CMultiplayer%20web%20games_19.png)
+![Multiplayer web games_19](https://github.com/user-attachments/assets/b6fb9e9e-4bdc-48ac-941e-0cb8711502a8)
 
 # Okay the last thing we've got to do is get a player controller in
 
-![](img%5CMultiplayer%20web%20games_20.png)
+![Multiplayer web games_20](https://github.com/user-attachments/assets/0b7e0f83-6cd5-4340-ad60-3e3e84c50b6b)
 
 This player controller is just a wrapper around the FirstPersonControls class provided by three js\.
 
@@ -193,15 +204,19 @@ You can enable / disable the FirstPersonControls by pressing space
 
 We can make a small change to our scene builder to give it the ability to add a player controller into our scene
 
-![](img%5CMultiplayer%20web%20games_21.png)
 
-![](img%5CMultiplayer%20web%20games_22.png)
+![Multiplayer web games_21](https://github.com/user-attachments/assets/43d6fb2a-68be-4e71-a689-615e2a15e5a6)
+
+
+![Multiplayer web games_22](https://github.com/user-attachments/assets/0e303600-2ba7-4224-8516-768917f8ed24)
 
 Now we can swap out our orbit controls for our first person controls
 
-![](img%5CMultiplayer%20web%20games_23.png)
 
-![](img%5CMultiplayer%20web%20games_24.png)
+![Multiplayer web games_23](https://github.com/user-attachments/assets/7d06ca73-8e0d-47cd-898b-28bd893e9922)
+
+![Multiplayer web games_24](https://github.com/user-attachments/assets/58dda858-b6b7-413a-abf6-83ba82e1ab13)
+
 
 # Yipeeee
 
@@ -209,7 +224,8 @@ Also if anyone could tell me what environment I have recreated here that would m
 
 We have now constructed a base project which we can make multiplayer\.
 
-![](img%5CMultiplayer%20web%20games_25.gif)
+
+![Multiplayer web games_25](https://github.com/user-attachments/assets/2ddaf067-644b-40f8-8ed2-bf9b87b4b58b)
 
 The aim will be to have two clients able to connect to the server and see each other walk around\. A client can leave and join back at any time\.
 
@@ -221,7 +237,8 @@ Doesn’t handle disconnections then reconnections well same again 😉
 
 # Server
 
-![](img%5CMultiplayer%20web%20games_26.png)
+
+![Multiplayer web games_26](https://github.com/user-attachments/assets/088c34e4-bf41-4847-8da9-2e462bafdebd)
 
 <span style="color:#ffffff">First we will use npm to install socket io </span>
 
@@ -229,15 +246,19 @@ Doesn’t handle disconnections then reconnections well same again 😉
 
 We will add a layer over the top of our express server to make the server an express and socket io server
 
-![](img%5CMultiplayer%20web%20games_27.png)
 
-![](img%5CMultiplayer%20web%20games_28.png)
+![Multiplayer web games_27](https://github.com/user-attachments/assets/eff9f233-d9ed-4862-9f3c-2965a0e69ca2)
+
+
+![Multiplayer web games_28](https://github.com/user-attachments/assets/e9a79c1e-bdbf-4954-b02d-1157db1bf634)
 
 Instead of app\.listen to start our server we can use server\.listen
 
-![](img%5CMultiplayer%20web%20games_29.png)
 
-![](img%5CMultiplayer%20web%20games_30.png)
+![Multiplayer web games_29](https://github.com/user-attachments/assets/e14519b0-f46b-4aa6-bfc3-382208b5ed7d)
+
+
+![Multiplayer web games_30](https://github.com/user-attachments/assets/44677720-9ea7-46e7-af95-8684a2741503)
 
 If your wondering how this socket\.io\.js file actually gets to your client\. Heres how
 
@@ -251,43 +272,51 @@ app\.get\(“Address”\, \(req\, res\) =>\{\}\); see if you can see it in your 
 
 # Next add socket io to the client
 
-![](img%5CMultiplayer%20web%20games_31.png)
+
+![Multiplayer web games_31](https://github.com/user-attachments/assets/33e6d46c-5d13-480e-aa7f-ccc15ff39647)
 
 # continued
 
 Then when html sees our \<script> tag it makes a http get request to the src which in this case is “socket\.io/socket\.io\.js” and the server returns the client side library code
 
-![](img%5CMultiplayer%20web%20games_32.png)
+
+![Multiplayer web games_32](https://github.com/user-attachments/assets/1e9275c0-ec9e-4d5a-92e9-4b70e9b1f72c)
 
 # Okay now we are ready to start using the library!
 
-![](img%5CMultiplayer%20web%20games_33.png)
+
+![Multiplayer web games_33](https://github.com/user-attachments/assets/efd83512-5734-4d78-9aeb-b5484171225a)
 
 # Initialize in our script
 
 # Add this to our server
 
-![](img%5CMultiplayer%20web%20games_34.png)
+
+![Multiplayer web games_34](https://github.com/user-attachments/assets/5c610643-32f1-472f-ae08-1f5d59807c17)
 
 # Test
 
-![](img%5CMultiplayer%20web%20games_35.gif)
+![Multiplayerwebgames_35-ezgif com-optimize](https://github.com/user-attachments/assets/7fa51aea-81d0-49de-8500-c810119156f2)
 
 # The server can send messages to the client if it wants
 
-![](img%5CMultiplayer%20web%20games_36.png)
+
+![Multiplayer web games_36](https://github.com/user-attachments/assets/00dc8f32-8ac6-4716-90b6-024871b6324d)
 
 # And we can create event handlers to react to these messages
 
-![](img%5CMultiplayer%20web%20games_37.png)
+
+![Multiplayer web games_37](https://github.com/user-attachments/assets/0d8650a8-699d-43df-85c9-6bf30224ee09)
 
 # Test
 
-![](img%5CMultiplayer%20web%20games_38.gif)
+
+![Multiplayer web games_38](https://github.com/user-attachments/assets/a472cb13-4f5f-4f13-b804-79fa471fadc8)
 
 # We can send custom data too if we want
 
-![](img%5CMultiplayer%20web%20games_39.gif)
+
+![Multiplayer web games_39](https://github.com/user-attachments/assets/bf65c5c9-6157-46d5-a0c2-14eac6b313a3)
 
 
 
@@ -345,7 +374,7 @@ A message to notify other clients when a client moves around \(synch movement\)
 
 # What messages will need to be sent?
 
-![](img%5CMultiplayer%20web%20games_40.png)
+![Multiplayer web games_40](https://github.com/user-attachments/assets/84aeac83-0011-4db7-a0a0-bfbf55492405)
 
 # Skeleton Code for Server networking
 
@@ -355,7 +384,7 @@ So you can see the two messages sent to the client
 
 And you can see a bunch of messages received from the client
 
-![](img%5CMultiplayer%20web%20games_41.png)
+![Multiplayer web games_41](https://github.com/user-attachments/assets/f421485c-097c-4647-bdad-2dd65bef0f57)
 
 # Skeleton code client
 
@@ -371,9 +400,9 @@ When you send the welcome message also send the number of clients connected
 
 When the client receives the welcome message they can do a simple if else statement to check if they are the first client or not and spawn themselves in the appropriate pre set position
 
-![](img%5CMultiplayer%20web%20games_42.png)
+![Multiplayer web games_42](https://github.com/user-attachments/assets/544ba917-785e-46f3-ae7a-ddd8582f50b8)
 
-![](img%5CMultiplayer%20web%20games_43.png)
+![Multiplayer web games_43](https://github.com/user-attachments/assets/22f5a011-928e-4d82-9aa7-234a068e1219)
 
 # Spawn a representation of client 2, client side, on client 1’s screen and vice versa
 
@@ -395,9 +424,9 @@ When get player pos message is received\, get the position of a player using the
   * Special case: if reacting to the latter message before you spawn the player representation you must get the position of the other player from the server using the “GetOtherPlayerPos” message
 
 
-![](img%5CMultiplayer%20web%20games_44.png)
+![Multiplayer web games_44](https://github.com/user-attachments/assets/940469b0-66a4-46e3-aad0-3770cf8b446e)
 
-![](img%5CMultiplayer%20web%20games_45.png)
+![Multiplayer web games_45](https://github.com/user-attachments/assets/b2aeb91d-7bae-4e69-a7f1-706a3ad0984b)
 
 # Network the movement of both clients
 
@@ -417,11 +446,11 @@ When the update other player message is received update the position of the othe
   * Send a update other player message to all clients except the sender
 
 
-![](img%5CMultiplayer%20web%20games_46.png)
+![Multiplayer web games_46](https://github.com/user-attachments/assets/6dac22c8-9187-462d-9fb9-8ee0b7ca8508)
 
-![](img%5CMultiplayer%20web%20games_47.png)
+![Multiplayer web games_47](https://github.com/user-attachments/assets/ae210d6b-f5bd-4b3e-81ec-87232f798e88)
 
-![](img%5CMultiplayer%20web%20games_48.png)
+![Multiplayer web games_48](https://github.com/user-attachments/assets/5b4e78a5-82bc-49f3-9dec-dfdbe6d1ee68)
 
 # Gracefully handle players quitting
 
@@ -437,9 +466,9 @@ When the update other player message is received update the position of the othe
   * Set the reference to the player representation to null
 
 
-![](img%5CMultiplayer%20web%20games_49.png)
+![Multiplayer web games_49](https://github.com/user-attachments/assets/d57dc5b2-d6de-4ee8-aa31-be4bded066c2)
 
-![](img%5CMultiplayer%20web%20games_50.png)
+![Multiplayer web games_50](https://github.com/user-attachments/assets/69e33e41-fe23-423d-a22c-9f9f1660bec6)
 
 ![](img%5CMultiplayer%20web%20games_51.gif)
 
@@ -449,23 +478,6 @@ When the update other player message is received update the position of the othe
 
 # Thank you for watching
 
-![](img%5CMultiplayer%20web%20games_53.png)
 
-![](img%5CMultiplayer%20web%20games_54.png)
-
-![](img%5CMultiplayer%20web%20games_55.png)
-
-![](img%5CMultiplayer%20web%20games_56.png)
-
-![](img%5CMultiplayer%20web%20games_57.png)
-
-![](img%5CMultiplayer%20web%20games_58.png)
-
-AverageAltoDriver
-
-James\-Richard\-Bland
-
-![](img%5CMultiplayer%20web%20games_59.png)
-
-![](img%5CMultiplayer%20web%20games_60.png)
+![links](https://github.com/user-attachments/assets/986814fc-0a89-4bc0-b92a-fea7d708e44f)
 
