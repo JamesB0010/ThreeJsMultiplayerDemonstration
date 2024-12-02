@@ -471,7 +471,7 @@ When the update other player message is received update the position of the othe
 ![Multiplayer web games_50](https://github.com/user-attachments/assets/69e33e41-fe23-423d-a22c-9f9f1660bec6)
 
 
-![Multiplayer web games_51](https://github.com/user-attachments/assets/f2641805-06e8-4667-893a-3059c86d631d)
+<img src="https://github.com/user-attachments/assets/f2641805-06e8-4667-893a-3059c86d631d" width="100%" height="auto"/>
 
 
 # Final Touches
@@ -483,7 +483,8 @@ This is done by placing all the networking logic and variables in a function and
 
 
 
-![Multiplayer web games_51](https://github.com/user-attachments/assets/45013cda-2f4f-42a5-af56-af4dad512331)
+
+<img src="https://github.com/user-attachments/assets/45013cda-2f4f-42a5-af56-af4dad512331" width="100%" height="auto"/>
 
 # Result
 
